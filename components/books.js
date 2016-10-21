@@ -1,12 +1,19 @@
+/*!
+ * Description:
+ *
+ *
+ * Author:  Henrik Grönvall
+ * File:
+ * Version: 0.0.1
+ * Created on 2016-10-16
+ */
 import React from 'react';
 import Book from './book.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-const Books = ({
-  books,
-  displayMode,
-  currentStatus,
-}) => {
+const Books = (props) => {
+  const { books, displayMode, currentStatus } = props;
+  
   const styles = {
     container: {
       width: '100%',
