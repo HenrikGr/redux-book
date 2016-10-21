@@ -1,3 +1,12 @@
+/*!
+ * Description:
+ *
+ *
+ * Author:  Henrik Grönvall
+ * File:
+ * Version: 0.0.1
+ * Created on 2016-10-16
+ */
 import React from 'react';
 
 const StateViewer = ({
