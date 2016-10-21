@@ -1,8 +1,15 @@
 /*!
  * Description: Module for the application entry point
  *
- * This module renders the App component which is wrapped inside a Redux Provider component.
- * The Provider component makes the Redux store available to the application and all descendant components.
+ * We are using react-redux bidning package which gives us access to an API that includes a component and a method:
+ * - Provider component provides access to the Redux store for components contained in the Provider component.
+ * - void connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options]) function connects a
+ *   React presentation component to the Redux store.
+ *
+ * The Provider component is a convenience so you don't need to manually pass the store as a property throughout your
+ * component hierarchy. Components that you nest inside the Provider component automatically have access to the
+ * Redux store.
+ *
  *
  * Author:  Henrik Grönvall
  * File:
