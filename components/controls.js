@@ -1,12 +1,20 @@
+/*!
+ * Description:
+ *
+ *
+ * Author:  Henrik Grönvall
+ * File:
+ * Version: 0.0.1
+ * Created on 2016-10-16
+ */
 import React from 'react';
 import DisplayModeContainer from '../containers/displayMode';
 import TopicSelectorContainer from '../containers/topicselector';
 import HistoryContainer from '../containers/history';
 
-const Controls = ({ 
-  topic,
-  displayMode,
-}) => {
+const Controls = (props) => {
+  const { topic, displayMode } = props;
+  
   const styles = {
     controls: {
       padding: '15px',
