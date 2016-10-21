@@ -1,3 +1,12 @@
+/*!
+ * Description:
+ *
+ *
+ * Author:  Henrik Grönvall
+ * File:
+ * Version: 0.0.1
+ * Created on 2016-10-16
+ */
 import React from 'react';
 
 export default class TopicSelector extends React.Component {
@@ -55,7 +64,8 @@ export default class TopicSelector extends React.Component {
           Topic
         </span>
 
-        <input type="text"
+        <input
+          type="text"
           ref="input"
           style={styles.input}
           value={topic}
