@@ -1,9 +1,16 @@
+/*!
+ * Description:
+ *
+ *
+ * Author:  Henrik Grönvall
+ * File:
+ * Version: 0.0.1
+ * Created on 2016-10-16
+ */
 import React from 'react';
 
-const Book = ({
-  item,
-  displayMode,
-}) => {
+const Book = (props) => {
+  const { item, displayMode } = props;
   const styles = {
     links: {
       marginTop: '20px',
@@ -29,21 +36,21 @@ const Book = ({
 
   const thumbnailMarkup = (currentItem, link) => (
     <a href={link} style={styles.link}>
-      <img src={currentItem.volumeInfo.imageLinks.thumbnail}
-        style={styles.image} 
-        role="presentation" /> 
+      <img
+        src={currentItem.volumeInfo.imageLinks.thumbnail}
+        style={styles.image}
+        role="presentation"
+      />
     </a>
   );
 
   const link = item.volumeInfo.canonicalVolumeLink;
 
-  return displayMode === 'THUMBNAIL' ?
-           thumbnailMarkup(item, link) :
-           linkMarkup     (item, link);
+  return displayMode === 'THUMBNAIL' ? thumbnailMarkup(item, link) : linkMarkup(item, link);
 };
 
 Book.propTypes = {
-  item:        React.PropTypes.object.isRequired,
+  item: React.PropTypes.object.isRequired,
   displayMode: React.PropTypes.string.isRequired,
 };
 
