@@ -1,12 +1,18 @@
+/*!
+ * Description:
+ *
+ *
+ * Author:  Henrik Grönvall
+ * File:
+ * Version: 0.0.1
+ * Created on 2016-10-16
+ */
 import React from 'react';
 
 require('./book.css');
 
-const DisplayMode = ({
-  setListing,
-  setThumbnail,
-  displayMode,
-}) => {
+const DisplayMode = (props) => {
+  const { setListing, setThumbnail, displayMode } = props;
   const switchToListing = () => {
     setListing();
   };
@@ -34,23 +40,27 @@ const DisplayMode = ({
         Thumbnail
       </span>
 
-      <input type="radio"
+      <input
+        type="radio"
         name="display"
         style={styles.radio}
         onChange={switchToThumbnail}
         checked={displayMode === 'THUMBNAIL'}
-        value="thumbnail" />
+        value="thumbnail"
+      />
 
       <span style={styles.radiospan}>
         List
       </span>
 
-      <input type="radio"
+      <input
+        type="radio"
         name="display"
         style={styles.radio}
         onChange={switchToListing}
         checked={displayMode !== 'THUMBNAIL'}
-        value="list" />
+        value="list"
+      />
     </span>
   );
 };
