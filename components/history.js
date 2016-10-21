@@ -1,6 +1,16 @@
+/*!
+ * Description:
+ *
+ *
+ * Author:  Henrik Grönvall
+ * File:
+ * Version: 0.0.1
+ * Created on 2016-10-16
+ */
 import React from 'react';
 
-export const History = ({ past, present, future, undo, redo, gotoState }) => {
+export const History = (props) => {
+  const { past, present, future, undo, redo, gotoState } = props;
   const styles = {
     container: {
       marginLeft: '20px',
@@ -36,7 +46,8 @@ export const History = ({ past, present, future, undo, redo, gotoState }) => {
     (present ? 1 : 0) +
     (future ? future.length : 0) - 1;
 
-  const value = () => past ? past.length : 0;
+  const value = () =>
+    past ? past.length : 0;
 
   return (
     <span style={styles.container}>
@@ -48,7 +59,8 @@ export const History = ({ past, present, future, undo, redo, gotoState }) => {
         min={0}
         max={max()}
         value={value()}
-        onChange={event => gotoState(event.target.value)} />
+        onChange={event => gotoState(event.target.value)}
+      />
 
       {(past && past.length > 0) ? <LeftArrow /> : null}
       {(future && future.length > 0) ? <RightArrow /> : null}
