@@ -1,5 +1,5 @@
 /*!
- * Description:
+ * Description: TopicSelector component
  *
  *
  * Author:  Henrik Grönvall
@@ -9,6 +9,9 @@
  */
 import React from 'react';
 
+/**
+ * TopicSelector Component.
+ */
 export default class TopicSelector extends React.Component {
   constructor(props) {
     super(props);
