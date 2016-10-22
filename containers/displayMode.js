@@ -21,9 +21,6 @@ import { setDisplayMode } from '../actions';
 // Import DisplayMode component
 import DisplayMode from '../components/displayMode';
 
-// No map state to props
-const mapStateToProps = null;
-
 // Map action creators to props
 const mapDispatchToProps = (dispatch) => ({
   setListing: () => {
@@ -37,4 +34,4 @@ const mapDispatchToProps = (dispatch) => ({
 /**
  * export the DisplayMode container component
  */
-export default connect(mapStateToProps, mapDispatchToProps)(DisplayMode);
+export default connect(null, mapDispatchToProps)(DisplayMode);
