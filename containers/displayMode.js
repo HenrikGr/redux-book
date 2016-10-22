@@ -2,7 +2,7 @@
  * Description: DisplayMode container component.
  *
  * We are also using mapDispatchToProps to pass action creators as props to the
- * TopicSelector component. The object we are passing include functions with
+ * DisplayMode component. The object we are passing include functions with
  * the same names, but with every action creator wrapped into a dispatch call
  * so they may be invoked directly.
  *
