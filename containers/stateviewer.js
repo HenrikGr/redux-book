@@ -1,12 +1,9 @@
 /*!
  * Description: StateViewer container component.
  *
- * The StateViewer container component subscribes to the application state,
- * located in the Redux store and when any changes occur to the state,
- * the StateViewer component will receive them as props.
- *
- * We declare all of the application states in mapStateToProps and make sure
- * the StaeViewer component will receive them when changes by the connect API.
+ * We are using mapStateToProps to subscribe to Redux store updates. Any time
+ * the store will updates, mapStoreToProps will be called and pass the changed state
+ * as props to the TopicSelector component.
  *
  *
  * Author:  Henrik Grönvall
@@ -23,11 +20,7 @@ import StateViewer from '../components/stateviewer';
 // Import stateHistory object
 import stateHistory from '../statehistory';
 
-/**
- * Subscribe to the state in the Redux store and pass changes as props
- * to the StateViewer component.
- * @param state
- */
+// Map state changes to props
 const mapStateToProps = (state) => ({
   books: state.books,
   topic: state.topic,
