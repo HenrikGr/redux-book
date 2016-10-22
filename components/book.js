@@ -1,5 +1,5 @@
 /*!
- * Description: Book component
+ * Description: Book stateless function component
  *
  * The component render a book either as a thumbnail or as a link.
  *
@@ -12,7 +12,14 @@
 // Module dependencies
 import React from 'react';
 
-// Book component
+
+/**
+ * Book stateless function component
+ * @param item
+ * @param displayMode
+ * @returns {XML}
+ * @constructor
+ */
 const Book = ({item,displayMode}) => {
   const styles = {
     links: {
@@ -54,15 +61,18 @@ const Book = ({item,displayMode}) => {
   return displayMode === 'THUMBNAIL' ? thumbnailMarkup(item, link) : linkMarkup(item, link);
 };
 
-// Book component props
+
+/**
+ * Book stateless function component props
+ * @type {{item: *, displayMode: *}}
+ */
 Book.propTypes = {
-  // Book data
   item: React.PropTypes.object.isRequired,
-  // Display mode
   displayMode: React.PropTypes.string.isRequired,
 };
 
+
 /**
- * Export the Book component
+ * Export the Book stateless function component
  */
 export default Book;
