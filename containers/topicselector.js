@@ -11,14 +11,18 @@
  * so they may be invoked directly.
  *
  *
- *
  * Author:  Henrik Grönvall
  * File:
  * Version: 0.0.1
  * Created on 2016-10-16
  */
+// Module dependencies
 import { connect } from 'react-redux';
+
+// Import action creators
 import { setTopic, fetchBooks } from '../actions';
+
+// Import TopicSelector component
 import TopicSelector from '../components/topicselector';
 
 // Map state changes to props
