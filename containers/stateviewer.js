@@ -3,7 +3,7 @@
  *
  * We are using mapStateToProps to subscribe to Redux store updates. Any time
  * the store will updates, mapStoreToProps will be called and pass the changed state
- * as props to the TopicSelector component.
+ * as props to the StateViewer component.
  *
  *
  * Author:  Henrik Grönvall
