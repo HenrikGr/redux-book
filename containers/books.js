@@ -1,5 +1,9 @@
 /*!
- * Description:
+ * Description: Books container component
+ *
+ * We are using mapStateToProps to subscribe to Redux store updates. Any time
+ * the store will updates, mapStoreToProps will be called and pass the changed state
+ * as props to the Books component.
  *
  *
  * Author:  Henrik Grönvall
@@ -18,4 +22,7 @@ const mapStateToProps = (state) => ({
   displayMode: state.displayMode,
 });
 
+/**
+ * Export Books container component
+ */
 export default connect(mapStateToProps, null)(Books);
