@@ -1,5 +1,8 @@
 /*!
- * Description:
+ * Description: StateViewer component.
+ *
+ * The StateViewer component will render the application state which is located
+ * in Redux store.
  *
  *
  * Author:  Henrik Grönvall
@@ -9,29 +12,30 @@
  */
 import React from 'react';
 
-const StateViewer = ({
-  topic,
-  books,
-  currentStatus,
-  displayMode,
-  history,
-}) => {
+/**
+ * StateView stateless function component
+ * @param topic
+ * @param books
+ * @param currentStatus
+ * @param displayMode
+ * @param history
+ * @returns {XML}
+ * @constructor
+ */
+const StateViewer = ({ topic, books, currentStatus, displayMode, history }) => {
   const styles = {
     container: {
       margin: '20px',
       width: '400px',
       fontFamily: 'tahoma',
     },
-
     title: {
       fontSize: '24px',
       marginTop: '25px',
     },
-
     state: {
       marginTop: '10px',
     },
-
     hr: {
       marginTop: '50px',
     },
@@ -58,6 +62,10 @@ const StateViewer = ({
   );
 };
 
+/**
+ * Property definitions for the component
+ * @type {{books: *, currentStatus: *, displayMode: *, history: *, topic: *}}
+ */
 StateViewer.propTypes = {
   books: React.PropTypes.array.isRequired,
   currentStatus: React.PropTypes.string.isRequired,
@@ -66,4 +74,7 @@ StateViewer.propTypes = {
   topic: React.PropTypes.string.isRequired,
 };
 
+/**
+ * Export the StateViewer component
+ */
 export default StateViewer;
