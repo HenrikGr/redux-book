@@ -1,16 +1,14 @@
 /*!
  * Description: Module for the application entry point
  *
- * We are using react-redux bidning package which gives us access to an API
- * that includes a component and a method:
- * - Provider component provides access to the Redux store for components contained
- *   in the Provider component.
- * - void connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
- *   function connects a React presentation component to the Redux store.
+ * The application dispatches two actions, created by the setTopic() and
+ * setDisplayMode() action creator functions to set the initial state to
+ * javascript and call fetchTopic which will perform a fetch using the topic
+ * value from the state.
  *
- * The Provider component is a convenience so you don't need to manually pass the store
- * as a property throughout your component hierarchy. Components that you nest inside
- * the Provider component automatically have access to the Redux store.
+ * The Provider component, part of the react-redux bindings, makes all of its
+ * properties available to any components inside the Provider tag body, in this case,
+ * a single property: the Redux store.
  *
  *
  * Author:  Henrik Grönvall
@@ -30,13 +28,17 @@ import App from './containers/app';
 // Import the store component
 import store from './store';
 
-// Import actions
+// Import actions creator functions
 import { fetchBooks, setTopic } from './actions';
 
-// The application dispatches two actions, created by the
-// setTopic() and setDisplayMode() action creator functions
-// to set the initial state to javascript
+// Dispatch the action setTopic, created by the setTopic()
+// action creator function to set the initial state (topic)
+// to javascript.
 store.dispatch(setTopic('javascript'));
+
+// Dispatch the action fetchBooks, created the fetchBooks()
+// action creator function which perform a fetch based on
+// topic set in the state (javascript).
 store.dispatch(fetchBooks());
 
 // Render the app.
