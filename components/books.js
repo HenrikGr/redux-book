@@ -1,5 +1,8 @@
 /*!
- * Description:
+ * Description: Books stateless function component
+ *
+ * The component displaying either the books fetched or a spinner.
+ * To decide which one, we checking currentStatus from the props.
  *
  *
  * Author:  Henrik Grönvall
@@ -7,24 +10,34 @@
  * Version: 0.0.1
  * Created on 2016-10-16
  */
+// Module dependencies
 import React from 'react';
-import Book from './book.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-const Books = (props) => {
-  const { books, displayMode, currentStatus } = props;
-  
+// Import the Book stateless function component
+import Book from './book.js';
+
+
+/**
+ * Books stateless function component
+ * @param books
+ * @param displayMode
+ * @param currentStatus
+ * @returns {XML}
+ * @constructor
+ */
+const Books = ({books,displayMode,currentStatus}) => {
   const styles = {
     container: {
       width: '100%',
     },
-
     spinner: {
       textAlign: 'center',
       width: '100%',
     },
   };
 
+  // Spinner helper function
   const Spinner = () => (
     <div style={styles.spinner}>
       <img src="./images/spinner.gif"
@@ -32,6 +45,7 @@ const Books = (props) => {
     </div>
   );
 
+  // Helper function to create xml markup for the books
   const bookMarkup = () => {
     let components = null;
     let bookItems = (<span>No items!</span>);
@@ -39,9 +53,9 @@ const Books = (props) => {
     if (books.length > 0) {
       components = books.map(item => {
         if (item.volumeInfo.imageLinks) {
+          
           // Need different keys for different display modes
           // to trigger <ReactCSSTransitionGroup> animations
-          
           const key = displayMode === 'THUMBNAIL' ? 
                                        item.id + 1 : 
                                        item.id;
@@ -55,7 +69,10 @@ const Books = (props) => {
     }
     return components;
   };
-
+  
+  /**
+   * Render the component
+   */
   return (
     <div>
       { currentStatus !== 'Fetching...' ?  null : <Spinner /> }
@@ -71,10 +88,19 @@ const Books = (props) => {
   );
 };
 
+
+/**
+ * Books stateless function component props
+ * @type {{books: *, currentStatus: *, displayMode: *}}
+ */
 Books.propTypes = {
-  books:       React.PropTypes.array.isRequired,
+  books: React.PropTypes.array.isRequired,
   currentStatus: React.PropTypes.string.isRequired,
   displayMode: React.PropTypes.string.isRequired,
 };
 
+
+/**
+ * Export the Books stateless function component
+ */
 export default Books;
