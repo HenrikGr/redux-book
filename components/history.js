@@ -1,6 +1,29 @@
 /*!
- * Description:
+ * Description: History component
  *
+ * The app component hierarchy looks like this:
+ *
+ * App
+ *  - ControlsContainer
+ *   - TopicSelectorContainer
+ *    - TopicSelector
+ *   - DisplayModeContainer
+ *    - DisplayMode
+ *   - HistoryContainer
+ *    - History (*)
+ *  - BooksContainer
+ *   - Book
+ *   - Book
+ *   - ...
+ *  - StateViewerContainer
+ *
+ * The component gets props from the HistoryContainer component;
+ * - past, array of past states
+ * - present, current state
+ * - future, array of future states
+ * - undo(), state history method to undo last change in the state
+ * - redo(), state history method to redo next change in the state
+ * - gotState(), state history method to go to a specific state.
  *
  * Author:  Henrik Grönvall
  * File:
@@ -9,8 +32,19 @@
  */
 import React from 'react';
 
-export const History = (props) => {
-  const { past, present, future, undo, redo, gotoState } = props;
+
+/**
+ * History component
+ * @param past
+ * @param present
+ * @param future
+ * @param undo
+ * @param redo
+ * @param gotoState
+ * @returns {XML}
+ * @constructor
+ */
+export const History = ({past,present,future,undo,redo,gotoState}) => {
   const styles = {
     container: {
       marginLeft: '20px',
@@ -68,11 +102,14 @@ export const History = (props) => {
   );
 };
 
+/**
+ * History component props
+ * @type {{past: *, present: *, future: *, undo: *, redo: *, gotoState: *}}
+ */
 History.propTypes = {
   past: React.PropTypes.array.isRequired,
   present: React.PropTypes.object.isRequired,
   future: React.PropTypes.array.isRequired,
-
   undo: React.PropTypes.func.isRequired,
   redo: React.PropTypes.func.isRequired,
   gotoState: React.PropTypes.func.isRequired,
