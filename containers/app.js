@@ -11,18 +11,21 @@
  * The application supports undo (by clicking the left arrow) and redo (by clicking the right arrow),
  * along with a history slider that moves you back and forth among the application's previous states.
  *
- * The component hierarchy looks like this:
+ * The app component hierarchy looks like this:
  *
- * App
- *  - Controls
- *   - TopicSelector
- *   - DisplayOption
- *   - History
- *  - Books
+ * App *
+ *  - ControlsContainer
+ *   - TopicSelectorContainer
+ *    - TopicSelector
+ *   - DisplayModeContainer
+ *    - DisplayMode
+ *   - HistoryContainer
+ *    - History
+ *  - BooksContainer
  *   - Book
  *   - Book
  *   - ...
- *  - StateViewer
+ *  - StateViewerContainer
  *
  *
  * Author:  Henrik Grönvall
