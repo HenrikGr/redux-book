@@ -4,6 +4,28 @@
  * The component displaying either the books fetched or a spinner.
  * To decide which one, we checking currentStatus from the props.
  *
+ * The app component hierarchy looks like this:
+ *
+ * App
+ *  - ControlsContainer
+ *   - TopicSelectorContainer
+ *    - TopicSelector
+ *   - DisplayModeContainer
+ *    - DisplayMode
+ *   - HistoryContainer
+ *    - History
+ *  - BooksContainer
+ *   - Books (*)
+ *    - Book
+ *    - Book
+ *    - ...
+ *  - StateViewerContainer
+ *
+ * The component gets props from the BooksContainer component;
+ * - books, array of book data.
+ * - currentStatus, status of the last fetch
+ * - displayMode, value indicating how the books should be rendered.
+ *
  *
  * Author:  Henrik Grönvall
  * File:
