@@ -1,5 +1,21 @@
 /*!
- * Description:
+ * Description: Object to store a history of Redux states.
+ *
+ * This object is used by the HistoryContainer component to pass props
+ * to the History component.
+ *
+ * The purpose of the object is to make it possible to "travel-in-time"
+ * through the history of states.
+ *
+ * The public properties are;
+ * - past, array to store past states
+ * - present, to store the current state
+ * - future, array of future states
+ *
+ * The public methods are;
+ * - undo, is used to undo and go to previous state
+ * - redo, is used to redo and go to next state
+ * - gotoState,
  *
  *
  * Author:  Henrik Grönvall
