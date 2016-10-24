@@ -13,7 +13,7 @@
  *
  * The app component hierarchy looks like this:
  *
- * App *
+ * App (*)
  *  - ControlsContainer
  *   - TopicSelectorContainer
  *    - TopicSelector
