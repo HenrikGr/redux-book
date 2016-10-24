@@ -1,12 +1,25 @@
 /*!
  * Description: Module for the applications action creators
  *
+ * GENERAL
  * Action creators might seem like a circuitous way to come up with an action object.
  * It would be simpler to specify the actions directly. However, implementing action
  * creators typically in one file, or a handful of files, makes it easy to locate the
  * code for your application's actions, which in effect serves as a form of documentation.
  *
  * Encapsulate the creation of actions in functions, making your code more readable.
+ *
+ * ACTIONS
+ * With Redux, we can't modify application state. Instead, we replace the existing
+ * state with a new state. The new state is specified by actions, which are immutable
+ * objects that describe state changes.
+ *
+ * Encapsulation of state changes in immutable objects has many advantages.
+ * One of those advantages, is the ability to implement endless undo and redo
+ * functionality, in effect, a sort of time machine.
+ *
+ * Actions are also executed in a strict order, so no race conditions occur.
+ *
  *
  * NOTE:
  * fetchCurrentTopic() is invoked by the thunk middleware implemented in ./middleware.js.
@@ -23,46 +36,31 @@
 const URL = 'https://www.googleapis.com/books/v1/volumes?q=';
 
 
-/**
- * Helper function for fetch start
- * @returns {{type: string}}
- */
 const fetchStart = () => ({
   type: 'FETCH_STARTED',
 });
 
-/**
- * Helper function for fetch complete status
- * @param json
- * @returns {{type: string, json: *}}
- */
 const fetchComplete = (json) => ({
   type: 'FETCH_COMPLETE',
   json,
 });
 
-/**
- * Helper function for fetch failed status
- * @param error
- * @returns {{type: string, error: *}}
- */
 const fetchFailed = (error) => ({
   type: 'FETCH_FAILED',
   error,
 });
 
-/**
- * Function that is called from the thunk middleware
- * @param dispatch
- * @param state
- */
 const fetchCurrentTopic = (dispatch, state) => {
+  
+  // Change type prop in state to FETCH_STARTED
   dispatch(fetchStart());
 
+  // Fetch data via GOOGLE API
   fetch(URL + state.topic)
     .then(res => res.json())
     .then(json => {
       if (json.error) {
+        // Change type
         dispatch(fetchFailed(json.error));
       } else {
         dispatch(fetchComplete(json));
@@ -73,56 +71,29 @@ const fetchCurrentTopic = (dispatch, state) => {
     });
 };
 
-/**
- * Module interface method to fetch books
- * @returns {{type: string, fn: (function(*, *))}}
- */
 const fetchBooks = () => ({
   type: 'BEGIN_FETCH',
   fn: fetchCurrentTopic,
 });
 
-/**
- * Module interface function to set topic
- * @param topic
- * @returns {{type: string, topic: *}}
- */
 const setTopic = (topic) => ({
   type: 'SET_TOPIC',
   topic,
 });
 
-/**
- * Module interface function to set display mode
- * @param displayMode
- * @returns {{type: string, displayMode: *}}
- */
 const setDisplayMode = (displayMode) => ({
   type: 'SET_DISPLAY_MODE',
   displayMode,
 });
 
-/**
- * Module interface function to redo
- * @returns {{type: string}}
- */
 const redo = () => ({
   type: 'REDO',
 });
 
-/**
- * Module interface function to undo
- * @returns {{type: string}}
- */
 const undo = () => ({
   type: 'UNDO',
 });
 
-/**
- * Module interface function to goto state
- * @param stateIndex
- * @returns {{type: string, stateIndex: *}}
- */
 const gotoState = (stateIndex) => ({
   type: 'GOTO',
   stateIndex,
@@ -130,6 +101,6 @@ const gotoState = (stateIndex) => ({
 
 
 /**
- * Export the modules interface functions.
+ * Export the modules action creator functions
  */
 export { fetchBooks, setTopic, setDisplayMode, redo, undo, gotoState };
