@@ -48,7 +48,7 @@ import Book from './book.js';
  * @returns {XML}
  * @constructor
  */
-const Books = ({books,displayMode,currentStatus}) => {
+const Books = ({ books, displayMode, currentStatus }) => {
   const styles = {
     container: {
       width: '100%',
@@ -62,8 +62,10 @@ const Books = ({books,displayMode,currentStatus}) => {
   // Spinner helper function
   const Spinner = () => (
     <div style={styles.spinner}>
-      <img src="./images/spinner.gif"
-        role="presentation" />
+      <img
+        src="./images/spinner.gif"
+        role="presentation"
+      />
     </div>
   );
 
@@ -75,34 +77,37 @@ const Books = ({books,displayMode,currentStatus}) => {
     if (books.length > 0) {
       components = books.map(item => {
         if (item.volumeInfo.imageLinks) {
-          
           // Need different keys for different display modes
           // to trigger <ReactCSSTransitionGroup> animations
-          const key = displayMode === 'THUMBNAIL' ? 
-                                       item.id + 1 : 
+          const key = displayMode === 'THUMBNAIL' ?
+                                       item.id + 1 :
                                        item.id;
           bookItems = (
-            <Book item={item} 
+            <Book
+              item={item}
               displayMode={displayMode}
-              key={key} />);
+              key={key}
+            />
+          );
         }
         return bookItems;
       });
     }
     return components;
   };
-  
+
   /**
    * Render the component
    */
   return (
     <div>
-      { currentStatus !== 'Fetching...' ?  null : <Spinner /> }
-    
+      {currentStatus !== 'Fetching...' ? null : <Spinner />}
       <div style={styles.container}>
-        <ReactCSSTransitionGroup transitionName="books"
+        <ReactCSSTransitionGroup
+          transitionName="books"
           transitionLeaveTimeout={1}
-          transitionEnterTimeout={1000}>
+          transitionEnterTimeout={1000}
+        >
           {bookMarkup()}
         </ReactCSSTransitionGroup>
       </div>

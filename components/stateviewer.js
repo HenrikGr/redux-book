@@ -15,9 +15,10 @@
  *   - HistoryContainer
  *    - History
  *  - BooksContainer
- *   - Book
- *   - Book
- *   - ...
+ *   - Books
+ *    - Book
+ *    - Book
+ *    - ...
  *  - StateViewerContainer
  *   - StateViewer (*)
  *
@@ -47,7 +48,7 @@ import React from 'react';
  * @returns {XML}
  * @constructor
  */
-const StateViewer = ({topic,books,currentStatus,displayMode,history}) => {
+const StateViewer = ({ topic, books, currentStatus, displayMode, history }) => {
   const styles = {
     container: {
       margin: '20px',
@@ -77,11 +78,11 @@ const StateViewer = ({topic,books,currentStatus,displayMode,history}) => {
       <div style={styles.state}>
         Topic: {topic}<br />
 
-        Display mode:      { displayMode }<br />
-        Current status:    { currentStatus }<br />
-        Books displayed:   { books.length }<br />
-        Actions processed: { history.past.length + history.future.length + 1 }<br />
-        Current action:    { history.past.length + 1 }
+        Display mode: {displayMode}<br />
+        Current status: {currentStatus}<br />
+        Books displayed: {books.length}<br />
+        Actions processed: {history.past.length + history.future.length + 1}<br />
+        Current action: {history.past.length + 1}
       </div>
     </div>
   );

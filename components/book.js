@@ -39,7 +39,7 @@ import React from 'react';
  * @returns {XML}
  * @constructor
  */
-const Book = ({item,displayMode}) => {
+const Book = ({ item, displayMode }) => {
   const styles = {
     links: {
       marginTop: '20px',

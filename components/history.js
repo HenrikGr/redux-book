@@ -44,7 +44,7 @@ import React from 'react';
  * @returns {XML}
  * @constructor
  */
-export const History = ({past,present,future,undo,redo,gotoState}) => {
+export const History = ({ past, present, future, undo, redo, gotoState }) => {
   const styles = {
     container: {
       marginLeft: '20px',

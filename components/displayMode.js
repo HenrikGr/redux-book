@@ -15,9 +15,10 @@
  *   - HistoryContainer
  *    - History
  *  - BooksContainer
- *   - Book
- *   - Book
- *   - ...
+ *   - Books
+ *    - Book
+ *    - Book
+ *    - ...
  *  - StateViewerContainer
  *
  * The component gets props from the DisplayModeContainer component;
@@ -43,7 +44,7 @@ require('./book.css');
  * @returns {XML}
  * @constructor
  */
-const DisplayMode = ({setListing,setThumbnail,displayMode}) => {
+const DisplayMode = ({ setListing, setThumbnail, displayMode }) => {
   // Switch to list mode
   const switchToListing = () => {
     setListing();

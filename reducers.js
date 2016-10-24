@@ -47,14 +47,14 @@ const fetchReducer = (state = defaults.STATE, action) => {
   switch (action.type) {
     case 'FETCH_STARTED':
       return [];
-    
+
     case 'FETCH_FAILED':
       alert('Fetch failed. Check your internet connection or change the query.');
       return [];
-    
+
     case 'FETCH_COMPLETE':
       return action.json.items;
-    
+
     default:
       return state;
   }

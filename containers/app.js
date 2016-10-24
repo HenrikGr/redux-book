@@ -8,8 +8,9 @@
  * The book thumbnails are links. When you click one, you see more information about the book
  * on books.google.com.
  *
- * The application supports undo (by clicking the left arrow) and redo (by clicking the right arrow),
- * along with a history slider that moves you back and forth among the application's previous states.
+ * The application supports undo (by clicking the left arrow) and redo (by clicking the right
+ * arrow), along with a history slider that moves you back and forth among the application's
+ * previous states.
  *
  * The app component hierarchy looks like this:
  *
