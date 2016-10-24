@@ -1,5 +1,24 @@
 /*!
- * Description: TopicSelector container component
+ * Description: TopicSelectorContainer component
+ *
+ * The component is a container component with the purpose of subscribe
+ * to the Redux store and pass changes as props to the TopicSelector component.
+ *
+ * The app component hierarchy looks like this:
+ *
+ * App
+ *  - ControlsContainer
+ *   - TopicSelectorContainer (*)
+ *    - TopicSelector
+ *   - DisplayModeContainer
+ *    - DisplayMode
+ *   - HistoryContainer
+ *    - History
+ *  - BooksContainer
+ *   - Book
+ *   - Book
+ *   - ...
+ *  - StateViewerContainer
  *
  * We are using mapStateToProps to subscribe to Redux store updates. Any time
  * the store will updates, mapStoreToProps will be called and pass the changed state
@@ -49,6 +68,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 /**
- * Export the TopicSelector container component.
+ * Export the TopicSelectorContainer component.
  */
 export default connect(mapStateToProps, mapDispatchToProps)(TopicSelector);
