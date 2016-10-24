@@ -3,7 +3,7 @@
  *
  * The StateViewer component will render the application state which is located
  * in Redux store.
- * 
+ *
  * The app component hierarchy looks like this:
  *
  * App
