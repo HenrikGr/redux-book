@@ -3,6 +3,25 @@
  *
  * The component render a book either as a thumbnail or as a link.
  *
+ * App
+ *  - ControlsContainer
+ *   - TopicSelectorContainer
+ *    - TopicSelector
+ *   - DisplayModeContainer
+ *    - DisplayMode
+ *   - HistoryContainer
+ *    - History
+ *  - BooksContainer
+ *   - Books
+ *    - Book (*)
+ *    - Book
+ *    - ...
+ *  - StateViewerContainer
+ *
+ * The component gets props from the Books component;
+ * - item, object with data for a book
+ * - displayMode, string to tell how the book should be rendered.
+ *
  *
  * Author:  Henrik Grönvall
  * File:
