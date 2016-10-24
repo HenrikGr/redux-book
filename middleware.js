@@ -1,6 +1,19 @@
+/*!
+ * Description: Middleware module
+ *
+ *
+ * Author:  Henrik Grönvall
+ * File:
+ * Version: 0.0.1
+ * Created on 2016-10-16
+ */
 /* eslint-disable no-unused-vars, consistent-return, no-console */
 
-export const thunk = store => next => action => { 
+/**
+ * thunk middleware
+ * @param store
+ */
+export const thunk = (store) => (next) => (action) => {
   if (action.fn && typeof action.fn === 'function') {
     action.fn(store.dispatch, store.getState()); // invoke the action
   } else {
@@ -8,6 +21,10 @@ export const thunk = store => next => action => {
   }
 };
 
+/**
+ * Logger middleware
+ * @param store
+ */
 export const logger = store => next => action => {
   console.log('MIDDLEWARE: Executing action ' + action.type);
   return next(action);
