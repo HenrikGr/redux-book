@@ -3,6 +3,31 @@
  *
  * The StateViewer component will render the application state which is located
  * in Redux store.
+ * 
+ * The app component hierarchy looks like this:
+ *
+ * App
+ *  - ControlsContainer
+ *   - TopicSelectorContainer
+ *    - TopicSelector (*)
+ *   - DisplayModeContainer
+ *    - DisplayMode
+ *   - HistoryContainer
+ *    - History
+ *  - BooksContainer
+ *   - Book
+ *   - Book
+ *   - ...
+ *  - StateViewerContainer
+ *   - StateViewer (*)
+ *
+ * The component gets props from the StateViewerContainer component;
+ * - books, array of books,
+ * - topic, string of search term,
+ * - currentStatus, string displaying the state status,
+ * - displayMode, string containing the text the user entered
+ * - history, state history.
+ *
  *
  *
  * Author:  Henrik Grönvall
@@ -22,7 +47,7 @@ import React from 'react';
  * @returns {XML}
  * @constructor
  */
-const StateViewer = ({ topic, books, currentStatus, displayMode, history }) => {
+const StateViewer = ({topic,books,currentStatus,displayMode,history}) => {
   const styles = {
     container: {
       margin: '20px',
