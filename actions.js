@@ -51,16 +51,12 @@ const fetchFailed = (error) => ({
 });
 
 const fetchCurrentTopic = (dispatch, state) => {
-  
-  // Change type prop in state to FETCH_STARTED
   dispatch(fetchStart());
 
-  // Fetch data via GOOGLE API
   fetch(URL + state.topic)
     .then(res => res.json())
     .then(json => {
       if (json.error) {
-        // Change type
         dispatch(fetchFailed(json.error));
       } else {
         dispatch(fetchComplete(json));
