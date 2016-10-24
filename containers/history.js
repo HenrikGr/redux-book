@@ -1,14 +1,43 @@
 /*!
- * Description: History container component.
+ * Description: HistoryContainer component.
  *
- * We are using mapStateToProps to subscribe to Redux store updates. Any time
- * the store will updates, mapStoreToProps will be called and pass the changed state
- * as props to the History component.
+ * The component is a container component with the purpose of subscribe
+ * to the Redux store and pass changes as props to the History component.
  *
- * We are also using mapDispatchToProps to pass action creators as props to the
+ * The app component hierarchy looks like this:
+ *
+ * App
+ *  - ControlsContainer
+ *   - TopicSelectorContainer
+ *    - TopicSelector
+ *   - DisplayModeContainer
+ *    - DisplayMode
+ *   - HistoryContainer (*)
+ *    - History
+ *  - BooksContainer
+ *   - Book
+ *   - Book
+ *   - ...
+ *  - StateViewerContainer
+ *
+ * We are using mapStateToProps to get updates from the statehistory object. Any
+ * time the statehistory object will updates, mapStoreToProps will be called and pass
+ * the changes as props to the History component.
+ *
+ * The props we will pass are;
+ * - past: array of past states
+ * - present: current state
+ * - future: array of future states
+ *
+ * We are also using mapDispatchToProps to pass statehistory methods as props to the
  * History component. The object we are passing include functions with
  * the same names, but with every action creator wrapped into a dispatch call
  * so they may be invoked directly.
+ *
+ * The action creators we pass as props are;
+ * - undo(), state history method to undo last change in the state
+ * - redo(), state history method to redo next change in the state
+ * - gotState(), state history method to go to a specific state.
  *
  *
  * Author:  Henrik Grönvall
@@ -35,7 +64,7 @@ const mapStateToProps = () => ({
   future: stateHistory.future,
 });
 
-// Map action creators as props
+// Map history object methods as props
 const mapDispatchToProps = (dispatch) => ({
   undo: () => {
     dispatch(undo());
@@ -49,6 +78,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 /**
- * Export the History container component
+ * Export the HistoryContainer component
  */
 export default connect(mapStateToProps, mapDispatchToProps)(History);
