@@ -2,11 +2,27 @@
  * Description: TopicSelector component
  *
  * The component renders an input field to enter search terms
- * utilizing the Google API.
  *
- * The setTopic() props is used to bind the input value to the
- * Redux store and when pressing Enter key, we use the prop fetchTopic()
- * to do a search for books.
+ * The app component hierarchy looks like this:
+ *
+ * App
+ *  - ControlsContainer
+ *   - TopicSelectorContainer
+ *    - TopicSelector (*)
+ *   - DisplayModeContainer
+ *    - DisplayMode
+ *   - HistoryContainer
+ *    - History
+ *  - BooksContainer
+ *   - Book
+ *   - Book
+ *   - ...
+ *  - StateViewerContainer
+ *
+ * The component gets props from the TopicSelectorContainer component;
+ * - topic, string containing the current value of the input field.
+ * - setTopic, action creator function to bind value entered to the Redux store.
+ * - fetchTopic, action creator to be invoked when performing a nre search.
  *
  *
  * Author:  Henrik Grönvall
@@ -41,18 +57,19 @@ export default class TopicSelector extends React.Component {
     putCursorAtEnd(input);
   }
 
-  // Update topic state
+  // Event handler to bind the value to topic state.
   handleChange(event) {
     this.props.setTopic(event.target.value);
   }
 
-  // Perform a fetch if Enter
+  // Event handler to dispatch a fetch if Enter key is pressed
   handleKeyPress(event) {
     if (event.key === 'Enter') {
       this.props.fetchTopic(event.target.value);
     }
   }
 
+  // Render component
   render() {
     const styles = {
       topic: {
@@ -67,9 +84,7 @@ export default class TopicSelector extends React.Component {
         marginRight: '10px',
       },
     };
-
-    const topic = this.props.topic;
-
+    
     return (
       <span>
         <span style={styles.topic}>
@@ -80,7 +95,7 @@ export default class TopicSelector extends React.Component {
           type="text"
           ref="input"
           style={styles.input}
-          value={topic}
+          value={this.props.topic}
           onChange={this.handleChange}
           onKeyPress={this.handleKeyPress}
         />
