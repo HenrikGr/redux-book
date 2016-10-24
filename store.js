@@ -1,6 +1,8 @@
 /*!
  * Description: The Redux store module
  *
+ *
+ * GENERAL
  * Redux manages state through a single JavaScript object, known as a data store,
  * where all of the application's state is located. Centralizing state in a single
  * object makes it easier to reason about application data when reading code.
@@ -9,18 +11,12 @@
  * Storing application state in a single object makes it easier to persist the entire
  * state of the application.
  *
- * With Redux, we can't modify application state. Instead, we replace the existing state
- * with a new state. The new state is specified by actions, which are (also immutable)
- * JavaScript objects that describe state changes.
- *
- * Encapsulation of state changes in immutable objects has many advantages.
- * One of those advantages, is the ability to implement endless undo and redo
-  * — in effect, a sort of time machine.
-  *
- * Actions are also executed in a strict order, so no race conditions occur.
- *
- *
- *
+ * STORE
+ * The state object för this application will contain;
+ * - books, array of books in json format.
+ * - topic, string containing the topic to search when pressing enter.
+ * - currentStatus, string describing the status of the app
+ * - displayMode, string, THUMBNAIL or LIST
  *
  *
  * Author:  Henrik Grönvall
@@ -34,10 +30,6 @@ import { logger, thunk } from './middleware';
 
 /**
  * Create the Redux store by calling Redux.createStore().
- *
- *
- *
- *
  */
 export default createStore(reducers, compose(applyMiddleware(logger, thunk),
       window.devToolsExtension ? window.devToolsExtension() : f => f));
