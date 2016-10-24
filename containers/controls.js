@@ -1,9 +1,25 @@
 /*!
- * Description: Controls container component
+ * Description: Controls component
  *
- * We are using mapStateToProps to subscribe to Redux store updates. Any time
- * the store will updates, mapStoreToProps will be called and pass the changed state
- * as props to the TopicSelector component.
+ * The component is a stateless function component with the purpose
+ * of render the TopicSelectorContainer, DisplayModeContainer, and the
+ * HistoryContainer components.
+ *
+ * The app component hierarchy looks like this:
+ *
+ * App
+ *  - ControlsContainer *
+ *   - TopicSelectorContainer
+ *    - TopicSelector
+ *   - DisplayModeContainer
+ *    - DisplayMode
+ *   - HistoryContainer
+ *    - History
+ *  - BooksContainer
+ *   - Book
+ *   - Book
+ *   - ...
+ *  - StateViewerContainer
  *
  *
  * Author:  Henrik Grönvall
@@ -12,18 +28,44 @@
  * Created on 2016-10-16
  */
 // Module dependencies
-import { connect } from 'react-redux';
+import React from 'react';
 
-// Import Controls component
-import Controls from '../components/controls';
+// Import DisplayModeContainer component
+import DisplayModeContainer from '../containers/displayMode';
 
-// Map state changes to props
-const mapStateToProps = (state) => ({
-  topic: state.topic,
-  displayMode: state.displayMode,
-});
+// Import TopicSelectorContainer component
+import TopicSelectorContainer from '../containers/topicselector';
+
+// Import HistoryContainer component
+import HistoryContainer from '../containers/history';
+
 
 /**
- * Export the Controls container component
+ * Controls stateless function component
+ * @returns {XML}
+ * @constructor
  */
-export default connect(mapStateToProps, null)(Controls);
+const Controls = () => {
+  const styles = {
+    controls: {
+      padding: '15px',
+      marginBottom: '25px',
+    },
+  };
+  
+  /**
+   * Render the component and pass the props
+   */
+  return (
+    <div style={styles.controls}>
+      <TopicSelectorContainer />
+      <DisplayModeContainer />
+      <HistoryContainer />
+    </div>
+  );
+};
+
+/**
+ * Export the Controls component
+ */
+export default Controls;
