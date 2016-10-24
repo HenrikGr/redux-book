@@ -1,5 +1,29 @@
 /*!
- * Description:
+ * Description: DisplayMode stateless function component
+ *
+ * The component renders radio button used to select how the search result
+ * should be rendered.
+ *
+ * The app component hierarchy looks like this:
+ *
+ * App
+ *  - ControlsContainer
+ *   - TopicSelectorContainer
+ *    - TopicSelector
+ *   - DisplayModeContainer
+ *    - DisplayMode (*)
+ *   - HistoryContainer
+ *    - History
+ *  - BooksContainer
+ *   - Book
+ *   - Book
+ *   - ...
+ *  - StateViewerContainer
+ *
+ * The component gets props from the DisplayModeContainer component;
+ * - displayMode, string containing the current value of the radio field.
+ * - setListing, action creator function to bind value when changing display mode.
+ * - setThumbnail, action creator function to bind value when changing display mode.
  *
  *
  * Author:  Henrik Grönvall
@@ -11,12 +35,21 @@ import React from 'react';
 
 require('./book.css');
 
-const DisplayMode = (props) => {
-  const { setListing, setThumbnail, displayMode } = props;
+/**
+ * DisplayMode stateless function component
+ * @param setListing
+ * @param setThumbnail
+ * @param displayMode
+ * @returns {XML}
+ * @constructor
+ */
+const DisplayMode = ({setListing,setThumbnail,displayMode}) => {
+  // Switch to list mode
   const switchToListing = () => {
     setListing();
   };
 
+  // Switch to thumbnail mode
   const switchToThumbnail = () => {
     setThumbnail();
   };
@@ -33,7 +66,8 @@ const DisplayMode = (props) => {
       fontSize: '16px',
     },
   };
-
+  
+  // Render component
   return (
     <span>
       <span style={styles.radiospan}>
@@ -65,14 +99,17 @@ const DisplayMode = (props) => {
   );
 };
 
-DisplayMode.contextTypes = {
-  store: React.PropTypes.object.isRequired,
-};
-
+/**
+ * DisplayMode props
+ * @type {{setListing: *, setThumbnail: *, displayMode: *}}
+ */
 DisplayMode.propTypes = {
   setListing: React.PropTypes.func.isRequired,
   setThumbnail: React.PropTypes.func.isRequired,
   displayMode: React.PropTypes.string.isRequired,
 };
 
+/**
+ * Export the DisplayMode component
+ */
 export default DisplayMode;
