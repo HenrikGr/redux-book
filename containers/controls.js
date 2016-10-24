@@ -1,5 +1,5 @@
 /*!
- * Description: Controls component
+ * Description: ControlsContainer component
  *
  * The component is a stateless function component with the purpose
  * of render the TopicSelectorContainer, DisplayModeContainer, and the
@@ -8,7 +8,7 @@
  * The app component hierarchy looks like this:
  *
  * App
- *  - ControlsContainer *
+ *  - ControlsContainer (*)
  *   - TopicSelectorContainer
  *    - TopicSelector
  *   - DisplayModeContainer
@@ -30,11 +30,11 @@
 // Module dependencies
 import React from 'react';
 
-// Import DisplayModeContainer component
-import DisplayModeContainer from '../containers/displayMode';
-
 // Import TopicSelectorContainer component
 import TopicSelectorContainer from '../containers/topicselector';
+
+// Import DisplayModeContainer component
+import DisplayModeContainer from '../containers/displayMode';
 
 // Import HistoryContainer component
 import HistoryContainer from '../containers/history';
