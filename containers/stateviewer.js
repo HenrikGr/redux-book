@@ -1,9 +1,38 @@
 /*!
- * Description: StateViewer container component.
+ * Description: StateViewerContainer component.
+ *
+ * The component is a container component with the purpose of subscribe
+ * to the Redux store and pass changes as props to the StateViewer component.
+ *
+ * The app component hierarchy looks like this:
+ *
+ * App
+ *  - ControlsContainer
+ *   - TopicSelectorContainer
+ *    - TopicSelector
+ *   - DisplayModeContainer
+ *    - DisplayMode
+ *   - HistoryContainer
+ *    - History
+ *  - BooksContainer
+ *   - Books
+ *    - Book
+ *    - Book
+ *    - ...
+ *  - StateViewerContainer (*)
+ *   - StateViewer
  *
  * We are using mapStateToProps to subscribe to Redux store updates. Any time
  * the store will updates, mapStoreToProps will be called and pass the changed state
  * as props to the StateViewer component.
+ *
+ * The props we will pass are;
+ * - books, array of books,
+ * - topic, string of search term,
+ * - currentStatus, string displaying the state status,
+ * - displayMode, string containing the text the user entered
+ * - history, state history.
+ *
  *
  *
  * Author:  Henrik Grönvall
@@ -30,6 +59,6 @@ const mapStateToProps = (state) => ({
 });
 
 /**
- * Export the StateViewer container component.
+ * Export the StateViewerContainer component.
  */
 export default connect(mapStateToProps, null)(StateViewer);
