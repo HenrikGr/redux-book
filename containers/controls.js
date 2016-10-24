@@ -16,9 +16,10 @@
  *   - HistoryContainer
  *    - History
  *  - BooksContainer
- *   - Book
- *   - Book
- *   - ...
+ *   - Books
+ *    - Book
+ *    - Book
+ *    - ...
  *  - StateViewerContainer
  *
  *
