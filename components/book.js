@@ -46,6 +46,7 @@ const Book = ({ item, displayMode }) => {
     },
     link: {
       padding: '25px',
+      color: 'grey',
     },
     image: {
       boxShadow: '3px 3px 3px #686868',
