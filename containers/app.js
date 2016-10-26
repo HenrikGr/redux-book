@@ -34,32 +34,28 @@
  * Version: 0.0.1
  * Created on 2016-10-16
  */
+// Module dependencies
 import React from 'react';
+
+// Import ControlContainer component
 import ControlsContainer from './controls';
+
+// Import BooksContainer component
 import BooksContainer from './books';
+
+// Import StateViewerContainer component
 import StateViewerContainer from './stateviewer';
 
-// Inline styles
-const titleStyle = {
-  fontFamily: 'tahoma',
-  fontSize: '24px',
-  textAlign: 'center',
-};
+// Import AppBar component
+import AppBar from '../components/appbar';
 
-// Inline Title stateless component
-const Title = () => (
-  <div style={titleStyle}>
-    Book Search
-  </div>
-);
 
 /**
  * Export the App component.
  */
 export default () => (
   <div>
-    <Title />
-    <hr />
+    <AppBar />
     <ControlsContainer />
     <BooksContainer />
     <StateViewerContainer />
