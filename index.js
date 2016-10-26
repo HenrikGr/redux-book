@@ -22,6 +22,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+// Import material-ui components
+import hgcTheme from './theme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+// Needed for onTouchTap, http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
+
 // Import the app container component
 import App from './containers/app';
 
@@ -44,7 +53,9 @@ store.dispatch(fetchBooks());
 // Render the app.
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <MuiThemeProvider muiTheme={getMuiTheme(hgcTheme)}>
+      <App />
+    </MuiThemeProvider>
   </Provider>,
-  document.getElementById('example')
+  document.getElementById('app')
 );
