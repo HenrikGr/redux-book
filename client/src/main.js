@@ -1,3 +1,12 @@
+/*
+ * Description: 
+ *
+ * Author:  Henrik
+ * File:    
+ * Version: 0.0.1
+ *
+ * Created: 2016-10-27
+ */
 /*!
  * Description: Module for the application entry point
  *
