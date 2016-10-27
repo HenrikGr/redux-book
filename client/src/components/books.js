@@ -63,7 +63,7 @@ const Books = ({ books, displayMode, currentStatus }) => {
   const Spinner = () => (
     <div style={styles.spinner}>
       <img
-        src="./images/spinner.gif"
+        src="./assets/img/spinner.gif"
         role="presentation"
       />
     </div>

@@ -1,16 +1,12 @@
-//var path = require('path');
-var webpack = require('webpack');
 
 module.exports = {
-  entry: './index.js',
-  output: { path: __dirname, filename: 'bundle.js' },
-  devtool: 'eval-source-map',
+  
+  entry: ['whatwg-fetch', __dirname + '/client/src/main.js'],
+  output: {
+    path: __dirname + '/client/dist/js',
+    filename: 'app.js'
+  },
   module: {
-    plugins: [
-     new webpack.ProvidePlugin({
-       'fetch': 'imports?this=>global+exports?global.fetch!whatwg-fetch'
-     })
-    ],
 
     loaders: [
       { 

@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "description": "A book search application that uses React and Redux",
   "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "webpack -d --watch",
+    "build:prod": "webpack",
+    "start": "node --use-strict index.js"
+  },
   "dependencies": {
+    "cfenv": "^1.0.3",
     "eslint": "^3.2.0",
+    "express": "^4.14.0",
     "material-ui": "^0.16.1",
     "react": "^15.3.0",
     "react-addons-css-transition-group": "^15.3.0",
@@ -12,7 +20,8 @@
     "react-redux": "^4.4.5",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.11.4",
@@ -29,10 +38,6 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.16.2"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --inline --hot --port 9090 ./index.js"
   },
   "author": "",
   "license": "ISC",
